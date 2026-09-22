@@ -1,0 +1,36 @@
+# Una palabra o frase clave por línea. No importan mayúsculas ni tildes.
+# Las líneas que empiezan con # son comentarios y se ignoran.
+# Edita esta lista libremente según lo que te interese postular.
+
+inteligencia artificial
+machine learning
+ciencia de datos
+analisis de datos
+analitica
+estadistica
+modelamiento de datos
+modelo predictivo
+modelos predictivos
+pronostico
+pronosticos
+series de tiempo
+muestreo
+encuesta
+analisis geoespacial
+sig
+sistema de informacion geografica
+dashboard
+power bi
+visualizacion de datos
+desarrollo de software
+automatizacion
+procesamiento de datos
+big data
+python
+lenguaje r
+capacitacion en estadistica
+curso de estadistica
+consultoria estadistica
+consultoria metodologica
+investigacion aplicada
+levantamiento de informacion
