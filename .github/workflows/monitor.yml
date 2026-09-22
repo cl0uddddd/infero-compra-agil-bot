@@ -1,0 +1,39 @@
+name: Monitor Compra Ágil
+
+on:
+  schedule:
+    # Corre cada 1 hora, en el minuto 0. La hora está en UTC (Chile = UTC-3 o UTC-4 según horario de verano).
+    - cron: "0 * * * *"
+  workflow_dispatch: {}  # permite correrlo manualmente desde la pestaña "Actions" de GitHub
+
+permissions:
+  contents: write  # necesario para poder guardar state.json de vuelta en el repo
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar el monitor
+        env:
+          MP_TICKET: ${{ secrets.MP_TICKET }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python monitor.py
+
+      - name: Guardar el estado (evitar avisos duplicados)
+        run: |
+          git config user.name "infero-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add state.json
+          git diff --quiet --cached || git commit -m "Actualiza estado de notificaciones [skip ci]"
+          git push
